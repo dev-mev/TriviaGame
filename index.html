@@ -23,24 +23,26 @@
       </header>
 
       <!-- QUESTIONS, TIMER-->
-      <div class="card" id ="questionsCard">
+      <div class="card w-50" id="questionsCard">
           <div class="card-body">
             <h5 class="card-title">How well do you know Roxy? Don't let her down!</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Time Remaining: <span id="timer"></span> seconds</h6>
-            <p class="card-text" id = "questionScreen"></p>
-            <button type="button" id ="submit" class="btn btn-warning">Submit</button>
+            <h6 class="card-subtitle mb-2 text-muted" id="timeRemaining">Time Remaining: <span id="timer"></span> seconds</h6>
+            <p class="card-text" id="questionScreen"></p>
+            <button type="button" id="submit" class="btn btn-warning">Submit</button>
           </div>
         </div>
 
       <!--RESULTS-->
-      <div class="card" id ="resultsCard">
+      <div class="card w-50" id="resultsCard">
           <div class="card-body">
-            <h5 class="card-title">How well do you know Roxy? Don't let her down!</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Time Remaining: <span id="timer"></span> seconds</h6>
-            <p class="card-text" id = "results"></p>
-            <img id = "badJob" src = "assets/images/roxyBeer.JPG">
-            <img id = "goodJob" src = "assets/images/roxyHappy.jpg">
-            <button type="button" id ="reset" class="btn btn-warning">Play Again</button>
+            <h5 class="card-title">RESULTS:</h5>
+            <p class="card-text">Answers correct: <span id="correct"></span></p>
+            <p class="card-text">Answers wrong: <span id="wrong"></span></p>
+            <p class="card-text">Unanswered: <span id="unanswered"></span></p>
+            <img id="badJob" src="assets/images/roxyNoLook.JPG">
+            <img id="okJob" src="assets/images/roxyBeer.JPG">
+            <img id="goodJob" src="assets/images/roxyHappy.JPG">
+            <button type="button" id="playAgainButton" class="btn btn-warning">Play Again</button>
           </div>
         </div>
 
@@ -49,6 +51,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <script src = "assets/javascript/app.js"></script>
+    <script src="assets/javascript/app.js"></script>
   </body>
 </html>

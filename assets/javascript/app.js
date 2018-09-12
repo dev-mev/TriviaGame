@@ -39,29 +39,40 @@ var questionsAnswers = [
             {name: "'Every Breath You Take' by the Police", isCorrect: false},
             {name: "'Don't Stand So Close to Me' by the Police", isCorrect: false}
         ]
+    },
+    {
+        question: "What's Roxy's favorite pastime?",
+        answers: [
+            {name: "Baseball", isCorrect: false},
+            {name: "Coding", isCorrect: false},
+            {name: "Peanut butter", isCorrect: true}
+        ]
+    },
+    {
+        question: "Who's Roxy's favorite musician?",
+        answers: [
+            {name: "Cashmere Cat", isCorrect: false},
+            {name: "A Flock of Seagulls", isCorrect: false},
+            {name: "Bone Thugs-n-Harmony ", isCorrect: true}
+        ]
     }
 ]
 
 //FUNCTIONS
 //start button functionality - starts timer counting down
 function startGame(){
-    timer = 120
+    timer = 60
     correct = 0
     wrong = 0
     unanswered = 0
+    $("#timeRemaining").show();
     $("#startButton").show();
     $("#resultsCard").hide();
     $("#badJob").hide();
+    $("#okJob").hide();
     $("#goodJob").hide();
     $("#questionsCard").hide();
-    $("#startButton").click(function(){
-        showQuestions = true;
-        $("#startButton").hide();
-        $("#questionsCard").show();
-        $("#timer").text(timer);
-        interval = setInterval(countDown, 1000);
-        listQuestions();
-    })
+    $("#results").empty();
 }
 
 //timer counts down
@@ -70,6 +81,7 @@ function countDown(){
         $("#timer").text(--timer);
         }
     else{
+        clearInterval(interval);
         gradeAnswers();
     }
 }
@@ -109,10 +121,6 @@ function createSingleButton(question, answer) {
         );
 }
 
-$("#submit").click(function(){
-gradeAnswers();
-})
-
 function gradeAnswers(){
     for(var questionInfo of questionsAnswers){
         if(questionInfo.hasCorrectAnswer === true){
@@ -124,90 +132,51 @@ function gradeAnswers(){
         else{
             unanswered++;
         }
+        delete questionInfo.hasCorrectAnswer;
     }
     clearInterval(interval);
     resultsScreen();
 }
 
+//endScreen displays number correct, incorrect, and unanswered
 function resultsScreen(){
+    $("#timeRemaining").hide();
     $("#questionsCard").hide();
     $("#resultsCard").show();
-    $("#results").prepend("<h1>" + "RESULTS");
-    $("#results").append("<p>" + "Answers correct: " + correct);
-    $("#results").append("<p>" + "Answers wrong: " + wrong);
-    $("#results").append("<p>" + "Unanswered: " + unanswered);
-    if(correct <= 2){
+    $("#correct").text(correct);
+    $("#wrong").text(wrong);
+    $("#unanswered").text(unanswered);
+    if(correct < 3){
         $("#badJob").show();
+    }
+    else if(correct === 3 || correct === 4){
+        $("#okJob").show();
     }
     else{
         $("#goodJob").show();
     }
 }
 
-$("#reset").click(function(){
-    startGame();
-    })
 //EVENTS
+$("#startButton").click(function(){
+    showQuestions = true;
+    $("#startButton").hide();
+    $("#questionsCard").show();
+    $("#timer").text(timer);
+    interval = setInterval(countDown, 1000);
+    listQuestions();
+})
+
+$("#submit").click(gradeAnswers);
+
+$("#playAgainButton").click(startGame);
+
 startGame();
 
 
 
 
-//log answer choices
-
-//endScreen displays number correct, incorrect, and unanswered
-
-
-// for (var questionInfo of questionsAnswers) {
-//     console.log(questionInfo.question);
-
-//     for (var answerInfo of questionInfo.answers) {
-//         console.log("> " + answerInfo.name);
-//     }
-// }
 
 
 
 
-// $("body").append(
-// 	$("<div>")
-// 		.addClass("btn-group btn-group-toggle")
-// 		.attr("data-toggle", "buttons")
-// 		.append(
-// 			$("<label>")
-// 				.addClass("btn btn-secondary")
-//                 .click(function () { console.log("you clicked me!"); })
-//                 .text(questionsAnswers[i].answers[a].name)
-// 				.append(
-// 					$("<input>")
-// 						.attr("type", "radio")
-//                         .attr("name", "options")
-//                         .attr("id", "option1")
-// 						.attr("autocomplete", "off")
-// 				)
-// 		)
-// 		.append(
-// 			$("<label>")
-// 				.addClass("btn btn-secondary")
-//                 .click(function () { console.log("you clicked me!"); })
-//                 .text("Radio button 2")
-// 				.append(
-// 					$("<input>")
-// 						.attr("type", "radio")
-// 						.attr("name", "options")
-// 						.attr("autocomplete", "off")
-// 				)
-// 		)
-// 		.append(
-// 			$("<label>")
-// 				.addClass("btn btn-secondary")
-//                 .click(function () { console.log("you clicked me!"); })
-//                 .text("Radio button 3")
-// 				.append(
-// 					$("<input>")
-// 						.attr("type", "radio")
-// 						.attr("name", "options")
-// 						.attr("autocomplete", "off")
-// 				)
-// 		)
-//     );

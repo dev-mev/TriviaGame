@@ -1,8 +1,48 @@
+body{
+  background-image: url("../images/background.jpg");
+  background-repeat: repeat-y;
+}
+
 .jumbotron{
-  background-color: blueviolet;
+  background-color: hotpink;
   color: white;
 }
 
 #roxyWink{
   margin: 20px;
+}
+
+.btn-group{
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.btn{
+  margin: 10px;
+}
+
+#startButton, #playAgainButton, #submit{
+  border-color: white;
+  color: white;
+  margin: 0;
+}
+
+#startButton{
+  background-color: red;
+}
+
+#playAgainButton, #submit{
+  background-color: hotpink;
+}
+
+.card{
+  margin: auto;
+}
+
+#timer{
+  color: hotpink;
+}
+
+img{
+  max-width: 100%;
 }
